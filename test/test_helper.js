@@ -18,9 +18,17 @@ before((done) => {
 //hook to delete all the records in the collection before running a test
 beforeEach((done) => {
     //above takes time to update , so stop till its completed
-    mongoose.connection.collections.users.drop(() => {
-        //ready to run the next test
-        done();
+    const {
+        users,
+        comments,
+        blogposts
+    } = mongoose.connection.collections;
+    users.drop(() => {
+        comments.drop(() => {
+            blogposts.drop(() => {
+                done();
+            });
+        });
     });
 
 });

@@ -56,7 +56,7 @@ describe('Subdocuments', () => {
                 name: 'Joe'
             }))
             .then((user) => {
-                user.post[0].remove(); //remove directly into the subdocument
+                user.posts[0].remove(); //remove directly into the subdocument
                 return user.save();
             })
             .then((user) => {
@@ -64,4 +64,7 @@ describe('Subdocuments', () => {
                 done();
             })
     })
+
+    //virtual
+
 });
